@@ -629,6 +629,13 @@ struct drm_mode_destroy_dumb {
 		DRM_MODE_ATOMIC_NONBLOCK |\
 		DRM_MODE_ATOMIC_ALLOW_MODESET)
 
+#define DRM_MODE_ATOMIC_FLAGS (\
+		DRM_MODE_PAGE_FLIP_EVENT |\
+		DRM_MODE_PAGE_FLIP_ASYNC |\
+		DRM_MODE_ATOMIC_TEST_ONLY |\
+		DRM_MODE_ATOMIC_NONBLOCK |\
+		DRM_MODE_ATOMIC_ALLOW_MODESET)
+
 struct drm_mode_atomic {
 	__u32 flags;
 	__u32 count_objs;
