@@ -96,6 +96,10 @@ MAN_SUBDIR = man
 endif
 endif
 
+if HAVE_ROCKCHIP
+ROCKCHIP_SUBDIR = rockchip
+endif
+
 SUBDIRS = \
 	. \
 	$(LIBKMS_SUBDIR) \
@@ -111,7 +115,8 @@ SUBDIRS = \
 	$(ETNAVIV_SUBDIR) \
 	data \
 	tests \
-	$(MAN_SUBDIR)
+	$(MAN_SUBDIR) \
+	$(ROCKCHIP_SUBDIR)
 
 libdrm_la_LTLIBRARIES = libdrm.la
 libdrm_ladir = $(libdir)
