@@ -127,6 +127,11 @@ AC_ARG_ENABLE(tegra-experimental-api,
 	      [Enable support for Tegra's experimental API (default: disabled)]),
 	      [TEGRA=$enableval], [TEGRA=no])
 
+AC_ARG_ENABLE(rockchip-experimental-api,
+	      AS_HELP_STRING([--enable-rockchip-experimental-api],
+	      [Enable support for rockchip's experimental API (default: disabled)]),
+	      [ROCKCHIP=$enableval], [ROCKCHIP=no])
+
 AC_ARG_ENABLE(vc4,
 	      AS_HELP_STRING([--disable-vc4],
 	      [Enable support for vc4's API (default: auto, enabled on arm)]),
@@ -416,6 +421,11 @@ if test "x$TEGRA" = xyes; then
 	AC_DEFINE(HAVE_TEGRA, 1, [Have Tegra support])
 fi
 
+AM_CONDITIONAL(HAVE_ROCKCHIP, [test "x$ROCKCHIP" = xyes])
+if test "x$ROCKCHIP" = xyes; then
+	AC_DEFINE(HAVE_ROCKCHIP, 1, [Have ROCKCHIP support])
+fi
+
 AM_CONDITIONAL(HAVE_VC4, [test "x$VC4" = xyes])
 if test "x$VC4" = xyes; then
 	AC_DEFINE(HAVE_VC4, 1, [Have VC4 support])
@@ -528,6 +538,8 @@ AC_CONFIG_FILES([
 	freedreno/libdrm_freedreno.pc
 	tegra/Makefile
 	tegra/libdrm_tegra.pc
+	rockchip/Makefile
+	rockchip/libdrm_rockchip.pc
 	vc4/Makefile
 	vc4/libdrm_vc4.pc
 	etnaviv/Makefile
@@ -563,6 +575,7 @@ echo "  OMAP API       $OMAP"
 echo "  EXYNOS API     $EXYNOS"
 echo "  Freedreno API  $FREEDRENO (kgsl: $FREEDRENO_KGSL)"
 echo "  Tegra API      $TEGRA"
+echo "  Rockchip API   $ROCKCHIP"
 echo "  VC4 API        $VC4"
 echo "  Etnaviv API    $ETNAVIV"
 echo ""
