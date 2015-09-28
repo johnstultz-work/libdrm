@@ -27,6 +27,14 @@
 
 #define NOUVEAU_DRM_HEADER_PATCHLEVEL 16
 
+/* reserved object handles when using deprecated object APIs - these
+ * are here so that libdrm can allow interoperability with the new
+ * object APIs
+ */
+#define NOUVEAU_ABI16_CLIENT   0xffffffff
+#define NOUVEAU_ABI16_DEVICE   0xdddddddd
+#define NOUVEAU_ABI16_CHAN(n) (0xcccc0000 | (n))
+
 struct drm_nouveau_channel_alloc {
 	uint32_t     fb_ctxdma_handle;
 	uint32_t     tt_ctxdma_handle;
